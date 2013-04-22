@@ -23,8 +23,6 @@
 % Required packages
 \RequirePackage[top=3cm,left=3cm,bottom=2cm,right=3cm]{geometry}
 \RequirePackage{xeCJK}
-\RequirePackage{ifthen}
-\RequirePackage{xparse}
 
 % Declarations
 \DeclareRobustCommand{\university}[2]{\gdef\@universityen{#1}\gdef\@universityzh{#2}}
