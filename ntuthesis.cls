@@ -8,7 +8,7 @@
 % ----------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ntuthesis}[2013/04/20 Thesis template for National Taiwan University]
+\ProvidesClass{ntuthesis}[2013/04/23 Thesis template for National Taiwan University]
 
 % Derived from book class
 \newif\ifphd
@@ -23,6 +23,7 @@
 % Required packages
 \RequirePackage[top=3cm,left=3cm,bottom=2cm,right=3cm]{geometry}
 \RequirePackage{xeCJK}
+\RequirePackage{CJKfntef}
 
 % Declarations
 \DeclareRobustCommand{\university}[2]{\gdef\@universityen{#1}\gdef\@universityzh{#2}}
@@ -41,7 +42,7 @@
 \abstractname{Abstract}{摘要}
 \acknowledgements{Acknowledgements}{誌謝}
 
-\DeclareRobustCommand{\maketitle}{
+\DeclareRobustCommand{\makecover}{
   \begin{titlepage}
     \begin{center}
       \fontsize{16}{24}\selectfont
@@ -72,6 +73,22 @@
       \@monthen, \@yearen
     \end{center}
   \end{titlepage}
+}
+
+\DeclareRobustCommand{\CJKmove}[1]{\raisebox{.35em}{#1}}
+\DeclareRobustCommand{\makespine}{
+  \noindent\rotatebox{-90}{
+    \CJKfamily{sidepagefont}
+    \begin{tabular}{m{3.5cm}m{0.1cm}m{2cm}m{0.1cm}m{10cm}m{1cm}m{2.5cm}m{0.1cm}m{1.5cm}}
+      \fontsize{8}{6}\selectfont
+      \begin{CJKfilltwosides}{3cm}\CJKmove{\@universityzh}\end{CJKfilltwosides}\newline
+      \begin{CJKfilltwosides}{3cm}\CJKmove{\@institutezh}\end{CJKfilltwosides} & &
+      \CJKmove{\@typezh論文} & &
+      {\fontsize{14}{14}\selectfont\CJKmove{\@titlezh}} & &
+      {\fontsize{14}{14}\selectfont\CJKmove{\@authorzh{} 撰}} & &
+      \raisebox{-0.25em}{\rotatebox{90}{\@yearzh{}} \rotatebox{90}{\hspace{0.25em}\@monthzh{}}}
+\end{tabular}
+}
 }
 
 \DeclareRobustCommand{\makecertification}{

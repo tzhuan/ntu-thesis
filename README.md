@@ -4,7 +4,7 @@
 前言
 ----------
 
-這個模版的前身是 LaTeX+CJK 的模版，是從我的碩士論文擷取出來的。如果您還是想用 LaTeX + CJK，請參考[這篇文章](http://www.csie.ntu.edu.tw/~tzhuan/www/resources/ntu/)。
+這個模版的前身是 LaTeX+CJK 的模版，是從我的碩士論文擷取出來的。如果您還是想用 LaTeX+CJK，請參考[這篇文章](http://www.csie.ntu.edu.tw/~tzhuan/www/resources/ntu/)。
 
 必要軟體及工具
 ----------
