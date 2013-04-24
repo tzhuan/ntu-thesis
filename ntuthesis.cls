@@ -11,11 +11,12 @@
 \ProvidesClass{ntuthesis}[2013/04/23 Thesis template for National Taiwan University]
 
 % Derived from book class
-\newif\ifphd
-\phdfalse
 \DeclareRobustCommand{\@typeen}{Master}
 \DeclareRobustCommand{\@typezh}{碩士}
+\DeclareRobustCommand{\@classen}{Thesis}
+\DeclareRobustCommand{\@classzh}{論文}
 \DeclareOption{phd}{\gdef\@typeen{Doctoral}\gdef\@typezh{博士}\phdtrue}
+\DeclareOption{proposal}{\gdef\@typeen{Proposal for Doctoral}\gdef\@typezh{博士論文計畫提案書}\gdef\@classen{}\gdef\@classzh{}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass[a4paper,12pt]{book}
@@ -23,7 +24,7 @@
 % Required packages
 \RequirePackage[top=3cm,left=3cm,bottom=2cm,right=3cm]{geometry}
 \RequirePackage{xeCJK}
-\RequirePackage{CJKfntef}
+%\RequirePackage{xeCJKfntef}
 
 % Declarations
 \DeclareRobustCommand{\university}[2]{\gdef\@universityen{#1}\gdef\@universityzh{#2}}
@@ -54,8 +55,7 @@
        \@instituteen\\
        \@collageen\par}
       \@universityen\\
-      \@typeen{}
-      \ifphd Dissertation \else Thesis \fi\par
+      \@typeen{} \@classen\par
       \vspace{2cm}
       \parbox[c][150pt][c]{\textwidth}{
         \centering
@@ -75,26 +75,77 @@
   \end{titlepage}
 }
 
+%  stolen from CJKfntef
+%
+%  myCJKfilltwosides environment:
+%    Align CJK characters to fill two sides.
+%
+%  Usage:
+%    \begin{myCJKfilltwosides}{width}
+%      first line \\
+%      second line \\
+%      ... \\
+%      last line
+%    \end{myCJKfilltwosides}
+%
+\newif\ifmyCJK@fillbegin@
+\global\myCJK@fillbegin@false
+\newif\ifmyCJK@filltwosides@
+\global\myCJK@filltwosides@false
+
+\newenvironment{myCJKfilltwosides}[1]{
+  \leavevmode
+  \vbox\bgroup
+    \global\myCJK@filltwosides@true
+    \global\let\myCJK@filltwosidesSymbol \CJKsymbol
+
+    \def\myCJK@ftscr{
+      \egroup
+      \global\myCJK@fillbegin@false
+      \hbox to #1\bgroup
+        \ignorespaces}
+
+    \let\\ \myCJK@ftscr
+
+    \def\CJKsymbol##1{
+      \ifmyCJK@fillbegin@
+        \hfill
+        \myCJK@filltwosidesSymbol{##1}
+      \else
+        \myCJK@filltwosidesSymbol{##1}
+        \global\myCJK@fillbegin@true
+      \fi}
+
+    \hbox to #1\bgroup
+      \ignorespaces
+ }{
+  \egroup
+  \egroup
+
+  \global\let\CJKsymbol \myCJK@filltwosidesSymbol
+  \global\myCJK@fillbegin@false
+  \global\myCJK@filltwosides@false}
+
+
 \DeclareRobustCommand{\CJKmove}[1]{\raisebox{.35em}{#1}}
 \DeclareRobustCommand{\makespine}{
   \noindent\rotatebox{-90}{
     \CJKfamily{sidepagefont}
     \begin{tabular}{m{3.5cm}m{0.1cm}m{2cm}m{0.1cm}m{10cm}m{1cm}m{2.5cm}m{0.1cm}m{1.5cm}}
       \fontsize{8}{6}\selectfont
-      \begin{CJKfilltwosides}{3cm}\CJKmove{\@universityzh}\end{CJKfilltwosides}\newline
-      \begin{CJKfilltwosides}{3cm}\CJKmove{\@institutezh}\end{CJKfilltwosides} & &
-      \CJKmove{\@typezh論文} & &
+      \begin{myCJKfilltwosides}{3cm}\CJKmove{\@universityzh}\end{myCJKfilltwosides}\newline
+      \begin{myCJKfilltwosides}{3cm}\CJKmove{\@institutezh}\end{myCJKfilltwosides} & &
+      \CJKmove{\@typezh\@classzh} & &
       {\fontsize{14}{14}\selectfont\CJKmove{\@titlezh}} & &
       {\fontsize{14}{14}\selectfont\CJKmove{\@authorzh{} 撰}} & &
       \raisebox{-0.25em}{\rotatebox{90}{\@yearzh{}} \rotatebox{90}{\hspace{0.25em}\@monthzh{}}}
-\end{tabular}
-}
+    \end{tabular}}
 }
 
 \DeclareRobustCommand{\makecertification}{
   \if@openright\cleardoublepage\else\clearpage\fi
   \begin{center}
-    \fontsize{24}{36}\selectfont\@universityzh\@typezh學位論文\\
+    \fontsize{24}{36}\selectfont\@universityzh\@typezh學位\@classzh\\
     口試委員會審定書\par
     \vspace{0.5cm}
     {\fontsize{20}{30}\selectfont\@titlezh\par\@titleen}
@@ -103,7 +154,7 @@
   \vspace{1cm}
   \fontsize{15}{24}\selectfont
 本論文係\@authorzh{}君 (\@studentid)
-在\@universityzh\@institutezh完成之\@typezh學位論文，%
+在\@universityzh\@institutezh完成之\@typezh學位\@classzh，%
 於民國 \@yearzh 年 \@monthzh 月 \@day 日%
 承下列考試委員審查通過及口試及格，特此證明\par
   \vspace{1.5cm}
