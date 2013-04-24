@@ -40,13 +40,13 @@
 ----------
 `ntuthesis.cls` 提供 `ntuthesis` 這個 `class`。`ntuthesis` 繼承自 `book`，所以所有 `book` 的參數 `ntuthesis` 都可以接受。例如您想帶入 `oneside`，則您可以修改 `thesis.tex` 的第一行：
 
-    \documentclass[oneside]{ntuthesis}
-
-`ntuthesis` 提供一個額外的參數： `phd`。預設的情況下樣版會產生碩士論文，如果您要撰寫博士論文，請記得帶入 `phd` 參數：
-
-    \documentclass[phd]{ntuthesis}
+    \documentclass[oneside, ...]{ntuthesis}
 
 `ntuthesis` 已經帶入 `a4paper` 和 `12pt` 這兩個參數了，您不需再額外指定。
 
+除了 `book` 支援的參數之外，`ntuthesis` 還額外支援以下參數：
+
+  * `phd`：如果您要撰寫博士論文，請使用本參數。如 `\documentclass[phd]{ntuthesis}`。
+  * `proposal`：如果您要撰寫博士論文計畫提案書，請使用本參數。如 `\documentclass[proposal]{ntuthesis}`。另外別忘記將 `thesis.tex` 裡的 `\makecertification` 註解掉。
 
 [Tz-Huan Huang](http://www.csie.ntu.edu.tw/~tzhuan)

@@ -15,8 +15,8 @@
 \DeclareRobustCommand{\@typezh}{碩士}
 \DeclareRobustCommand{\@classen}{Thesis}
 \DeclareRobustCommand{\@classzh}{論文}
-\DeclareOption{phd}{\gdef\@typeen{Doctoral}\gdef\@typezh{博士}\phdtrue}
-\DeclareOption{proposal}{\gdef\@typeen{Proposal for Doctoral}\gdef\@typezh{博士論文計畫提案書}\gdef\@classen{}\gdef\@classzh{}}
+\DeclareOption{phd}{\gdef\@typeen{Doctoral}\gdef\@typezh{博士}\gdef\@classen{Dissertation}}
+\DeclareOption{proposal}{\gdef\@typeen{Proposal for Doctoral}\gdef\@typezh{博士論文計畫提案書}\gdef\@classen{Dissertation}\gdef\@classzh{}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass[a4paper,12pt]{book}
@@ -50,7 +50,7 @@
       \vspace{1cm}
       {\fontsize{18}{30}\selectfont
        \@universityzh\@collagezh\@institutezh\par
-       \@typezh{}論文\par}
+       \@typezh{}\@classzh\par}
       {\fontsize{14}{25}\selectfont
        \@instituteen\\
        \@collageen\par}
