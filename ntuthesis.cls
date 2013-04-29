@@ -145,7 +145,7 @@
 \DeclareRobustCommand{\makecertification}{
   \if@openright\cleardoublepage\else\clearpage\fi
   \begin{center}
-    \fontsize{24}{36}\selectfont\@universityzh\@typezh學位\@classzh\\
+    \fontsize{24}{36}\selectfont\@universityzh\@typezh{}學位\@classzh\\
     口試委員會審定書\par
     \vspace{0.5cm}
     {\fontsize{20}{30}\selectfont\@titlezh\par\@titleen}
@@ -154,7 +154,7 @@
   \vspace{1cm}
   \fontsize{15}{24}\selectfont
 本論文係\@authorzh{}君 (\@studentid)
-在\@universityzh\@institutezh完成之\@typezh學位\@classzh，%
+在\@universityzh\@institutezh{}完成之\@typezh{}學位\@classzh，%
 於民國 \@yearzh 年 \@monthzh 月 \@day 日%
 承下列考試委員審查通過及口試及格，特此證明\par
   \vspace{1.5cm}
