@@ -17,6 +17,9 @@
 \DeclareRobustCommand{\@classzh}{論文}
 \DeclareOption{phd}{\gdef\@typeen{Doctoral}\gdef\@typezh{博士}\gdef\@classen{Dissertation}}
 \DeclareOption{proposal}{\gdef\@typeen{Proposal for Doctoral}\gdef\@typezh{博士論文計畫提案書}\gdef\@classen{Dissertation}\gdef\@classzh{}}
+\DeclareRobustCommand{\@setspacing}{\doublespacing}
+\DeclareOption{singlespacing}{\gdef\@setspacing{\singlespacing}}
+\DeclareOption{onehalfspacing}{\gdef\@setspacing{\onehalfspacing}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass[a4paper,12pt]{book}
@@ -24,7 +27,7 @@
 % Required packages
 \RequirePackage[top=3cm,left=3cm,bottom=2cm,right=3cm]{geometry}
 \RequirePackage{xeCJK}
-%\RequirePackage{xeCJKfntef}
+\RequirePackage{setspace}
 
 % Declarations
 \DeclareRobustCommand{\university}[2]{\gdef\@universityen{#1}\gdef\@universityzh{#2}}
@@ -45,33 +48,33 @@
 
 \DeclareRobustCommand{\makecover}{
   \begin{titlepage}
+    \vspace{1cm}
+    \begin{singlespace}
     \begin{center}
-      \fontsize{16}{24}\selectfont
-      \vspace{1cm}
-      {\fontsize{18}{30}\selectfont
-       \@universityzh\@collagezh\@institutezh\par
-       \@typezh{}\@classzh\par}
-      {\fontsize{14}{25}\selectfont
-       \@instituteen\\
-       \@collageen\par}
-      \@universityen\\
-      \@typeen{} \@classen\par
-      \vspace{2cm}
-      \parbox[c][150pt][c]{\textwidth}{
-        \centering
-        \@titlezh\par
-        \@titleen
-      }\par
-      \vspace{4cm}
+      \fontsize{18}{27}\selectfont
+      \@universityzh\@collagezh\@institutezh\par
+        \@typezh{}\@classzh\par
+      {\fontsize{14}{21}\selectfont
+        \@instituteen\par
+        \@collageen\par}
+      {\fontsize{16}{24}\selectfont
+        \@universityen\par
+        \@typeen{} \@classen\par}
+      \vspace{\fill}
+      \@titlezh\par
+      \@titleen\par
+      \vspace{\fill}
       \@authorzh\\
       \@authoren\par
-      \vspace{1.5cm}
+      \vspace{2cm}
       指導教授：\@advisorzh\\
       Advisor: \@advisoren\par
       \vspace{1.5cm}
       中華民國 \@yearzh 年 \@monthzh 月\\
       \@monthen, \@yearen
     \end{center}
+    \end{singlespace}
+    \vspace{1cm}
   \end{titlepage}
 }
 
@@ -144,37 +147,36 @@
 
 \DeclareRobustCommand{\makecertification}{
   \if@openright\cleardoublepage\else\clearpage\fi
+  \begin{singlespace}
   \begin{center}
     \fontsize{24}{36}\selectfont\@universityzh\@typezh{}學位\@classzh\\
     口試委員會審定書\par
     \vspace{0.5cm}
-    {\fontsize{20}{30}\selectfont\@titlezh\par\@titleen}
+    {\fontsize{20}{30}\selectfont\@titlezh\par\@titleen\par}
   \end{center}
   \addcontentsline{toc}{chapter}{口試委員會審定書}
   \vspace{1cm}
-  {\fontsize{15}{24}\selectfont
-本論文係\@authorzh{}君 (\@studentid)
+  \fontsize{15}{24}\selectfont
+\hspace{30pt}本論文係\@authorzh{}君 (\@studentid)
 在\@universityzh\@institutezh{}完成之\@typezh{}學位\@classzh，%
 於民國 \@yearzh 年 \@monthzh 月 \@day 日%
-承下列考試委員審查通過及口試及格，特此證明}\par
-  \vspace{1.5cm}
+承下列考試委員審查通過及口試及格，特此證明\par
+  \end{singlespace}
+  \vspace{\fill}
   \begin{center}
-    \begin{tabular}{cp{0.8\textwidth}}
-口試委員： & \\
-    & \\
-    & \rule{0.75\textwidth}{1pt} \\
-    & \\
-    & \rule{0.75\textwidth}{1pt} \\
-    & \\
-    & \rule{0.75\textwidth}{1pt} \\
-    & \\
-    & \rule{0.75\textwidth}{1pt} \\
-    & \\
-    & \rule{0.75\textwidth}{1pt} \\
-    & \\
-所~主~任 & \rule{0.75\textwidth}{1pt}
-    \end{tabular}
+  \begin{doublespace}
+  \fontsize{15}{30}\selectfont
+  \begin{tabular}{p{2.75cm}p{12.5cm}}
+    \raisebox{30pt}{口試委員：} & \rule{11.5cm}{1pt} \\
+    & \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt} \\
+    & \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt} \\
+    & \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt} \\
+    & \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt} \\
+    \raisebox{5pt}{所\hspace{15pt}長：} & \rule{8.5cm}{1pt}
+  \end{tabular}
+  \end{doublespace}
   \end{center}
+  \vspace*{-1cm}
 }
 
 \newenvironment{quotationpage}[1]
@@ -191,3 +193,4 @@
 
 \setcounter{tocdepth}{2}
 \pagestyle{plain}
+\@setspacing
