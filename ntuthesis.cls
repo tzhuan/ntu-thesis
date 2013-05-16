@@ -152,11 +152,11 @@
   \end{center}
   \addcontentsline{toc}{chapter}{口試委員會審定書}
   \vspace{1cm}
-  \fontsize{15}{24}\selectfont
+  {\fontsize{15}{24}\selectfont
 本論文係\@authorzh{}君 (\@studentid)
 在\@universityzh\@institutezh{}完成之\@typezh{}學位\@classzh，%
 於民國 \@yearzh 年 \@monthzh 月 \@day 日%
-承下列考試委員審查通過及口試及格，特此證明\par
+承下列考試委員審查通過及口試及格，特此證明}\par
   \vspace{1.5cm}
   \begin{center}
     \begin{tabular}{cp{0.8\textwidth}}
