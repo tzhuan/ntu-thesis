@@ -16,6 +16,8 @@
 
 Changelog
 ----------
+  * v0.3.1
+    * Fix issue #2, thanks to BachiLi.
   * v0.3
     * Fix issue #1, thanks to simonxander.
 	* Set doublespacing by default, add singlespacing and onehalfspacing support.
