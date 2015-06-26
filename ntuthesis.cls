@@ -37,9 +37,9 @@
 \DeclareRobustCommand{\author}[2]{\gdef\@authoren{#1}\gdef\@authorzh{#2}}
 \DeclareRobustCommand{\studentid}[1]{\gdef\@studentid{#1}}
 \DeclareRobustCommand{\advisor}[2]{\gdef\@advisoren{#1}\gdef\@advisorzh{#2}}
-\DeclareRobustCommand{\year}[2]{\gdef\@yearen{#1}\gdef\@yearzh{#2}}
-\DeclareRobustCommand{\month}[2]{\gdef\@monthen{#1}\gdef\@monthzh{#2}}
-\DeclareRobustCommand{\day}[1]{\gdef\@day{#1}}
+\DeclareRobustCommand{\defenseyear}[2]{\gdef\@yearen{#1}\gdef\@yearzh{#2}}
+\DeclareRobustCommand{\defensemonth}[2]{\gdef\@monthen{#1}\gdef\@monthzh{#2}}
+\DeclareRobustCommand{\defenseday}[1]{\gdef\@day{#1}}
 \DeclareRobustCommand{\abstractname}[2]{\gdef\@abstractnameen{#1}\gdef\@abstractnamezh{#2}}
 \DeclareRobustCommand{\acknowledgements}[2]{\gdef\@acknowledgementsen{#1}\gdef\@acknowledgementszh{#2}}
 
