@@ -16,10 +16,12 @@
 
 Changelog
 ----------
+  * v0.4
+    * Rename \year, \month and \day to avoid the conflicts. Thanks to @shaform.
   * v0.3.1
-    * Fix issue #2, thanks to BachiLi.
+    * Fix issue #2, thanks to @BachiLi.
   * v0.3
-    * Fix issue #1, thanks to simonxander.
+    * Fix issue #1, thanks to @simonxander.
 	* Set doublespacing by default, add singlespacing and onehalfspacing support.
 	* Refine the cover page and the certification.
   * v0.2
