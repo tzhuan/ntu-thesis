@@ -7,20 +7,27 @@ RM=rm -f
 # use your own password
 PDF_PWD=rdkRq8u8lAzARCIPa8Us
 
+# files to compile
+files := $(wildcard *.tex) ntuthesis.cls thesis.bib
+# content files
+files := $(files) $(wildcard chapters/*.tex) $(wildcard tables/*.tex) $(wildcard figures/*.tex)
+# embeded files
+files := $(files) $(wildcard images/*) $(wildcard pdfs/*.pdf)
+
 .SUFFIXES: .tex
 
 all: $(MAIN).pdf
 
-$(MAIN).pdf: *.tex ntuthesis.cls
-	cp without-watermark.tex watermark.tex
+$(MAIN).pdf: $(files) src/without-watermark.tex
+	cp src/without-watermark.tex watermark.tex
 	$(LATEX) $(MAIN)
 	$(BIBTEX) $(MAIN)
 	$(LATEX) $(MAIN)
 	$(LATEX) $(MAIN)
 	$(RM) watermark.tex
 
-ntulib: pdfs/watermark.pdf *.tex ntuthesis.cls
-	cp with-watermark.tex watermark.tex
+ntulib: pdfs/watermark.pdf src/with-watermark.tex $(files)
+	cp src/with-watermark.tex watermark.tex
 	$(LATEX) $(MAIN)
 	$(BIBTEX) $(MAIN)
 	$(LATEX) $(MAIN)
@@ -35,7 +42,7 @@ pdfs/watermark.pdf: pdfs
 	wget http://etds.lib.ntu.edu.tw/files/watermark.pdf -O pdfs/watermark.pdf
 
 clean:
-	$(RM) *.log *.aux *.dvi *.lof *.lot *.toc *.bbl *.blg
+	$(RM) *.log *.aux *.dvi *.lof *.lot *.toc *.bbl *.blg *.out
 
 clean-pdf:
 	$(RM) *.pdf

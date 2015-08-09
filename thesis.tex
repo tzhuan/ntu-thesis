@@ -1,4 +1,4 @@
-\documentclass[zh,twoside]{ntuthesis}
+\documentclass[oneside]{ntuthesis}
 
 \usepackage{times}
 \usepackage{verbatim}
@@ -12,6 +12,13 @@
 % Format the refs
 \usepackage[sort,comma]{natbib}
 \usepackage[hidelinks]{hyperref}
+
+% For the tree
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+
+% For barchart
+\usepackage{pgfplots}
 
 % Using the tex-text mapping for ligatures etc.
 \defaultfontfeatures{Mapping=tex-text}
@@ -61,12 +68,11 @@
 \mainmatter
 
 % Your thesis goes here
-\input{introduction}
-%\input{related}
-%\input{photoshoot}
-%\input{modeling}
-%\input{application}
-%\input{conclusion}
+\input{chapters/introduction}
+\input{chapters/related}
+\input{chapters/method}
+\input{chapters/experiment}
+\input{chapters/conclusion}
 
 \appendix
 
