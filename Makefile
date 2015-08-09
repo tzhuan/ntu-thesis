@@ -38,8 +38,9 @@ ntulib: pdfs/watermark.pdf src/with-watermark.tex $(files)
 pdfs:
 	mkdir pdfs
 
-pdfs/watermark.pdf: pdfs
+pdfs/watermark.pdf: | pdfs
 	wget http://etds.lib.ntu.edu.tw/files/watermark.pdf -O pdfs/watermark.pdf
+	touch $@
 
 clean:
 	$(RM) *.log *.aux *.dvi *.lof *.lot *.toc *.bbl *.blg *.out

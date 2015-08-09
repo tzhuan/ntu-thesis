@@ -15,14 +15,15 @@
 \DeclareRobustCommand{\@typezh}{碩士}
 \DeclareRobustCommand{\@classen}{Thesis}
 \DeclareRobustCommand{\@classzh}{論文}
-\DeclareRobustCommand{\@doublelinespacing}{\setstretch{1.9}}
-\DeclareRobustCommand{\@onehalflinespacing}{\setstretch{1.6}}
 \DeclareOption{phd}{\gdef\@typeen{Doctoral}\gdef\@typezh{博士}\gdef\@classen{Dissertation}}
 \DeclareOption{proposal}{\gdef\@typeen{Proposal for Doctoral}\gdef\@typezh{博士論文計畫提案書}\gdef\@classen{Dissertation}\gdef\@classzh{}}
-\DeclareRobustCommand{\@setspacing}{\@doublelinespacing}
+
+\def\@doubleline{1.9}
+\def\@onehalfline{1.62}
+\DeclareRobustCommand{\@setspacing}{\setstretch{\@doubleline}}
 \newif\ifzh
 \zhfalse
-\DeclareOption{zh}{\gdef\@setspacing{\@onehalflinespacing}\zhtrue}
+\DeclareOption{zh}{\gdef\@setspacing{\setstretch{\@onehalfline}}\zhtrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass[a4paper,12pt,oneside]{book}
@@ -134,10 +135,10 @@
    \quotation}
   {\endquotation}
 
-\newenvironment{abstracten}{\begin{quotationpage}{\@abstractnameen}\begin{spacing}{1.9}}{\end{spacing}\end{quotationpage}}
-\newenvironment{abstractzh}{\begin{quotationpage}{\@abstractnamezh}\begin{spacing}{1.6}}{\end{spacing}\end{quotationpage}}
-\newenvironment{acknowledgementsen}{\begin{quotationpage}{\@acknowledgementsen}\begin{spacing}{1.9}}{\end{spacing}\end{quotationpage}}
-\newenvironment{acknowledgementszh}{\begin{quotationpage}{\@acknowledgementszh}\begin{spacing}{1.6}}{\end{spacing}\end{quotationpage}}
+\newenvironment{abstracten}{\begin{quotationpage}{\@abstractnameen}\begin{spacing}{\@doubleline}}{\end{spacing}\end{quotationpage}}
+\newenvironment{abstractzh}{\begin{quotationpage}{\@abstractnamezh}\begin{spacing}{\@onehalfline}}{\end{spacing}\end{quotationpage}}
+\newenvironment{acknowledgementsen}{\begin{quotationpage}{\@acknowledgementsen}\begin{spacing}{\@doubleline}}{\end{spacing}\end{quotationpage}}
+\newenvironment{acknowledgementszh}{\begin{quotationpage}{\@acknowledgementszh}\begin{spacing}{\@onehalfline}}{\end{spacing}\end{quotationpage}}
 
 \setcounter{tocdepth}{2}
 \pagestyle{plain}
