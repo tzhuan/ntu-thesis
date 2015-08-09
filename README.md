@@ -30,7 +30,7 @@ sudo apt-get install texlive texlive-xetex texlive-latex-recommended texlive-lat
 sudo mkdir -p /usr/share/fonts/truetype/win/ 
 # 從 Windows 複製字體
 sudo cp [WINDOWS]/Windows/Fonts/kaiu.ttf /usr/share/fonts/truetype/win/
-sudo cp [WINDOWS]/Windows/Fonts/times\*.ttf /usr/share/fonts/truetype/win/
+sudo cp [WINDOWS]/Windows/Fonts/times*.ttf /usr/share/fonts/truetype/win/
 fc-cache
 # 檢查是否成功
 fc-list | grep "times\|kaiu"
@@ -53,4 +53,4 @@ make ntulib
 
 ### Windows
 
-* 留下字形檔案，下載[Ubuntu](http://www.ubuntu.com/)並安裝或找一台[蘋果電腦](http://www.apple.com/tw/mac/)。
+* 留下字形檔案，下載 [Ubuntu](http://www.ubuntu.com/) 並安裝或找一台[蘋果電腦](http://www.apple.com/tw/mac/)。
