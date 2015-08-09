@@ -34,6 +34,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{indentfirst}
 \RequirePackage{tocloft} % for centering title
+\RequirePackage[notbib]{tocbibind} % include ToC/LoF/LoT into ToC
 \RequirePackage{titlesec} % for formatting title
 \RequirePackage{titletoc} % for formatting toc
 \RequirePackage{etoolbox} % for patchcmd
