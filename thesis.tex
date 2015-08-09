@@ -1,4 +1,4 @@
-\documentclass{ntuthesis}
+\documentclass[zh,twoside]{ntuthesis}
 
 \usepackage{times}
 \usepackage{verbatim}
@@ -6,7 +6,12 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{array}
-\usepackage{wallpaper}
+\usepackage{pdfpages} % include outside .pdf
+\usepackage{wallpaper} % watermark
+
+% Format the refs
+\usepackage[sort,comma]{natbib}
+\usepackage[hidelinks]{hyperref}
 
 % Using the tex-text mapping for ligatures etc.
 \defaultfontfeatures{Mapping=tex-text}
@@ -23,17 +28,34 @@
 % 臺大論文浮水印
 \input{watermark.tex}
 
-\frontmatter
+\hypersetup{pageanchor=false}
 
+\frontmatter
+\pagenumbering{gobble}
 \makecover
 
+\clearpages
+\setcounter{page}{1}
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\phantomsection
+
 \makecertification
+% or include scanned pdf
+%\addcontentsline{toc}{chapter}{口試委員會審定書}
+%\includepdf[pages={1}]{pdfs/cert.pdf}
 
 \input{acknowledgements}
 \input{abstract}
 
+% Table of Content
+\clearpages
 \tableofcontents
+% List of Figures
+\clearpages
 \listoffigures
+% List of Tables
+\clearpages
 \listoftables
 
 \mainmatter
@@ -50,8 +72,10 @@
 
 \backmatter
 
+\clearpages
+\phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
-\bibliographystyle{abbrv}
+\bibliographystyle{apa}
 
 % Your bibliography goes here
 \bibliography{thesis}
