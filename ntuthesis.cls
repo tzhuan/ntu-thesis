@@ -237,4 +237,11 @@
   \renewcommand{\tablename}{表}
   \renewcommand{\figurename}{圖}
   \renewcommand{\bibname}{參考文獻}
+
+  \DeclareRobustCommand{\@startappendix}{
+  \titleformat{\chapter}{\centering\Huge\bfseries}{附錄 \thechapter}{1em}{}
+  \titlecontents{chapter}[0em]{}{\makebox[4.1em][l]{附錄 \thecontentslabel}}{}{\cftdotfill{\cftdotsep}\contentspage}
+  \appendix}
+\else
+  \DeclareRobustCommand{\@startappendix}{\appendix}
 \fi
