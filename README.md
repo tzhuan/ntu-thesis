@@ -23,8 +23,8 @@
 ### Ubuntu 14.04
 
 ```bash
-# 安裝 XeLaTex 及 PDFtk
-sudo apt-get install texlive texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-bibtex-extra texlive-science texlive-humanities pdftk
+# 安裝 XeLaTex 及 PDFtk 及 curl
+sudo apt-get install texlive texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-bibtex-extra texlive-science texlive-humanities pdftk curl
 
 # 安裝字形（標楷體、Times New Roman）
 sudo mkdir -p /usr/share/fonts/truetype/win/ 

@@ -39,7 +39,7 @@ pdfs:
 	mkdir pdfs
 
 pdfs/watermark.pdf: | pdfs
-	wget http://etds.lib.ntu.edu.tw/files/watermark.pdf -O pdfs/watermark.pdf
+	curl "http://etds.lib.ntu.edu.tw/files/watermark.pdf" -o "pdfs/watermark.pdf"
 
 clean:
 	$(RM) *.log *.aux *.dvi *.lof *.lot *.toc *.bbl *.blg *.out
@@ -50,4 +50,4 @@ clean-pdf:
 clean-all: clean clean-pdf
 
 setup:
-	sudo apt-get install texlive texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-bibtex-extra texlive-science texlive-humanities pdftk
+	sudo apt-get install texlive texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-bibtex-extra texlive-science texlive-humanities pdftk curl
