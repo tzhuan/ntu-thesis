@@ -1,32 +1,56 @@
 臺灣大學碩博士論文 XeLaTeX 模版
 ==========
 
+
 前言
 ----------
 
-這個模版的前身是 LaTeX+CJK 的模版，如果您還是想用 LaTeX+CJK，請參考[這篇文章](http://www.csie.ntu.edu.tw/~tzhuan/www/resources/ntu/)。
+這個模版的前身是 [tzhuan](http://github.com/tzhuan) 的
+[臺灣大學碩博士論文 XeLaTeX 模板](https://github.com/tzhuan/ntu-thesis)。
+同時也整合了一些 [qcl](https://github.com/qcl) 針對
+[qcl-master-thesis](https://github.com/qcl/qcl-master-thesis) 所做的修改。
+其中，他也參考了 [台大碩博士論文LaTeX範本](https://code.google.com/p/ntu-thesis-latex-template/)。
+最後則由 [shaform](https://github.com/shaform) 在撰寫論文期間又做了些許更動。
+
 
 下載
 ----------
-您可以直接 clone 這個 git repository，或者您可以在[這裡](https://github.com/tzhuan/ntu-thesis/tags)下載發行版本。
+您可以直接 clone 這個 git repository。
 
-說明
-----------
-請參考 [wiki](https://github.com/tzhuan/ntu-thesis/wiki) 的說明。
 
-Changelog
-----------
-  * v0.4
-    * Rename \year, \month and \day to avoid the conflicts. Thanks to [shaform](https://github.com/shaform).
-  * v0.3.1
-    * Fix issue #2, thanks to [BachiLi](https://github.com/BachiLi).
-  * v0.3
-    * Fix issue #1, thanks to [simonxander](https://github.com/simonxander).
-	* Set doublespacing by default, add singlespacing and onehalfspacing support.
-	* Refine the cover page and the certification.
-  * v0.2
-    * Add proposal support
-  * v0.1
-    * The first release
+環境設定
+--------------
+### Ubuntu 14.04
 
-[Tz-Huan Huang](http://www.csie.ntu.edu.tw/~tzhuan)
+```bash
+# 安裝 XeLaTex 及 PDFtk
+sudo apt-get install texlive texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-bibtex-extra texlive-science texlive-humanities pdftk
+
+# 安裝字形（標楷體、Times New Roman）
+sudo mkdir -p /usr/share/fonts/truetype/win/ 
+# 從 Windows 複製字體
+sudo cp [WINDOWS]/Windows/Fonts/kaiu.ttf /usr/share/fonts/truetype/win/
+sudo cp [WINDOWS]/Windows/Fonts/times\*.ttf /usr/share/fonts/truetype/win/
+fc-cache
+# 檢查是否成功
+fc-list | grep "times\|kaiu"
+
+# 編譯
+make
+
+# 編譯送圖書館版本（加上浮水印、保全）
+make ntulib
+```
+
+### Mac OS
+
+* 安裝 [MacTEX](https://tug.org/mactex/)
+* 安裝 [PDFtk](http://www.pdflabs.com/tools/pdftk-server/)
+* 編譯
+    * make
+* 編譯送圖書館版本（加上浮水印、保全）
+    * make ntulib
+
+### Windows
+
+* 留下字形檔案，下載[Ubuntu](http://www.ubuntu.com/)並安裝或找一台[蘋果電腦](http://www.apple.com/tw/mac/)。
