@@ -15,9 +15,33 @@
 
 下載
 ----------
-您可以直接 clone 這個 git repository。
+您可以直接 clone 這個 git repository，或者您可以在[這裡](https://github.com/shaform/ntu-thesis/releases)下載發行版本。
 
 
 說明
 ----------
 請參考 [wiki](https://github.com/shaform/ntu-thesis/wiki) 的說明。
+
+
+Changelog
+----------
+  * v1.0
+    * The first fork release
+    * Add Chinese support
+    * Add NTU watermark & password protection
+    * Add certification and spine .docx files
+    * Add setup
+    * Add hypertext links in the document
+    * Adjust line spacing
+  * v0.4
+    * Rename \year, \month and \day to avoid the conflicts. Thanks to [shaform](https://github.com/shaform).
+  * v0.3.1
+    * Fix issue #2, thanks to [BachiLi](https://github.com/BachiLi).
+  * v0.3
+    * Fix issue #1, thanks to [simonxander](https://github.com/simonxander).
+	* Set doublespacing by default, add singlespacing and onehalfspacing support.
+	* Refine the cover page and the certification.
+  * v0.2
+    * Add proposal support
+  * v0.1
+    * The first release
