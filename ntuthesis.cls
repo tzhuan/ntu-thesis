@@ -25,13 +25,13 @@
 \LoadClass[a4paper,12pt]{book}
 
 % Required packages
-\RequirePackage[top=3cm,left=3cm,bottom=2cm,right=3cm]{geometry}
+\RequirePackage[top=2cm,left=3cm,bottom=3cm,right=3cm]{geometry}
 \RequirePackage{xeCJK}
 \RequirePackage{setspace}
 
 % Declarations
 \DeclareRobustCommand{\university}[2]{\gdef\@universityen{#1}\gdef\@universityzh{#2}}
-\DeclareRobustCommand{\collage}[2]{\gdef\@collageen{#1}\gdef\@collagezh{#2}}
+\DeclareRobustCommand{\college}[2]{\gdef\@collegeen{#1}\gdef\@collegezh{#2}}
 \DeclareRobustCommand{\institute}[2]{\gdef\@instituteen{#1}\gdef\@institutezh{#2}}
 \DeclareRobustCommand{\title}[2]{\gdef\@titleen{#1}\gdef\@titlezh{#2}}
 \DeclareRobustCommand{\author}[2]{\gdef\@authoren{#1}\gdef\@authorzh{#2}}
@@ -52,11 +52,11 @@
     \begin{singlespace}
     \begin{center}
       \fontsize{18}{27}\selectfont
-      \@universityzh\@collagezh\@institutezh\par
+      \@universityzh\@collegezh\@institutezh\par
         \@typezh{}\@classzh\par
       {\fontsize{14}{21}\selectfont
         \@instituteen\par
-        \@collageen\par}
+        \@collegeen\par}
       {\fontsize{16}{24}\selectfont
         \@universityen\par
         \@typeen{} \@classen\par}
