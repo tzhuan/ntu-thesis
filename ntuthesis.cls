@@ -17,17 +17,30 @@
 \DeclareRobustCommand{\@classzh}{論文}
 \DeclareOption{phd}{\gdef\@typeen{Doctoral}\gdef\@typezh{博士}\gdef\@classen{Dissertation}}
 \DeclareOption{proposal}{\gdef\@typeen{Proposal for Doctoral}\gdef\@typezh{博士論文計畫提案書}\gdef\@classen{Dissertation}\gdef\@classzh{}}
-\DeclareRobustCommand{\@setspacing}{\doublespacing}
-\DeclareOption{singlespacing}{\gdef\@setspacing{\singlespacing}}
-\DeclareOption{onehalfspacing}{\gdef\@setspacing{\onehalfspacing}}
+
+\def\@doubleline{1.9}
+\def\@onehalfline{1.62}
+\DeclareRobustCommand{\@setspacing}{\setstretch{\@doubleline}}
+\newif\ifzh
+\zhfalse
+\DeclareOption{zh}{\gdef\@setspacing{\setstretch{\@onehalfline}}\zhtrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[a4paper,12pt]{book}
+\LoadClass[a4paper,12pt,oneside]{book}
 
 % Required packages
 \RequirePackage[top=2cm,left=3cm,bottom=3cm,right=3cm]{geometry}
 \RequirePackage{xeCJK}
 \RequirePackage{setspace}
+\RequirePackage{titlesec}
+\RequirePackage{indentfirst}
+\RequirePackage{tocloft} % for centering title
+\RequirePackage[notbib]{tocbibind} % include ToC/LoF/LoT into ToC
+\RequirePackage{titlesec} % for formatting title
+\RequirePackage{titletoc} % for formatting toc
+\RequirePackage{etoolbox} % for patchcmd
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
 
 % Declarations
 \DeclareRobustCommand{\university}[2]{\gdef\@universityen{#1}\gdef\@universityzh{#2}}
@@ -45,6 +58,8 @@
 
 \abstractname{Abstract}{摘要}
 \acknowledgements{Acknowledgements}{誌謝}
+
+\DeclareRobustCommand{\clearpages}{\if@openright\cleardoublepage\else\clearpage\fi}
 
 \DeclareRobustCommand{\makecover}{
   \begin{titlepage}
@@ -78,75 +93,9 @@
   \end{titlepage}
 }
 
-%  stolen from CJKfntef
-%
-%  myCJKfilltwosides environment:
-%    Align CJK characters to fill two sides.
-%
-%  Usage:
-%    \begin{myCJKfilltwosides}{width}
-%      first line \\
-%      second line \\
-%      ... \\
-%      last line
-%    \end{myCJKfilltwosides}
-%
-\newif\ifmyCJK@fillbegin@
-\global\myCJK@fillbegin@false
-\newif\ifmyCJK@filltwosides@
-\global\myCJK@filltwosides@false
-
-\newenvironment{myCJKfilltwosides}[1]{
-  \leavevmode
-  \vbox\bgroup
-    \global\myCJK@filltwosides@true
-    \global\let\myCJK@filltwosidesSymbol \CJKsymbol
-
-    \def\myCJK@ftscr{
-      \egroup
-      \global\myCJK@fillbegin@false
-      \hbox to #1\bgroup
-        \ignorespaces}
-
-    \let\\ \myCJK@ftscr
-
-    \def\CJKsymbol##1{
-      \ifmyCJK@fillbegin@
-        \hfill
-        \myCJK@filltwosidesSymbol{##1}
-      \else
-        \myCJK@filltwosidesSymbol{##1}
-        \global\myCJK@fillbegin@true
-      \fi}
-
-    \hbox to #1\bgroup
-      \ignorespaces
- }{
-  \egroup
-  \egroup
-
-  \global\let\CJKsymbol \myCJK@filltwosidesSymbol
-  \global\myCJK@fillbegin@false
-  \global\myCJK@filltwosides@false}
-
-
-\DeclareRobustCommand{\CJKmove}[1]{\raisebox{.35em}{#1}}
-\DeclareRobustCommand{\makespine}{
-  \noindent\rotatebox{-90}{
-    \CJKfamily{sidepagefont}
-    \begin{tabular}{m{3.5cm}m{0.1cm}m{2cm}m{0.1cm}m{10cm}m{1cm}m{2.5cm}m{0.1cm}m{1.5cm}}
-      \fontsize{8}{6}\selectfont
-      \begin{myCJKfilltwosides}{3cm}\CJKmove{\@universityzh}\end{myCJKfilltwosides}\newline
-      \begin{myCJKfilltwosides}{3cm}\CJKmove{\@institutezh}\end{myCJKfilltwosides} & &
-      \CJKmove{\@typezh\@classzh} & &
-      {\fontsize{14}{14}\selectfont\CJKmove{\@titlezh}} & &
-      {\fontsize{14}{14}\selectfont\CJKmove{\@authorzh{} 撰}} & &
-      \raisebox{-0.25em}{\rotatebox{90}{\@yearzh{}} \rotatebox{90}{\hspace{0.25em}\@monthzh{}}}
-    \end{tabular}}
-}
 
 \DeclareRobustCommand{\makecertification}{
-  \if@openright\cleardoublepage\else\clearpage\fi
+  \clearpages
   \begin{singlespace}
   \begin{center}
     \fontsize{24}{36}\selectfont\@universityzh\@typezh{}學位\@classzh\\
@@ -180,17 +129,120 @@
 }
 
 \newenvironment{quotationpage}[1]
-  {\if@openright\cleardoublepage\else\clearpage\fi
+  {\clearpages
    \chapter*{\centerline{#1}}
    \addcontentsline{toc}{chapter}{#1}
    \quotation}
   {\endquotation}
 
-\newenvironment{abstracten}{\begin{quotationpage}{\@abstractnameen}}{\end{quotationpage}}
-\newenvironment{abstractzh}{\begin{quotationpage}{\@abstractnamezh}}{\end{quotationpage}}
-\newenvironment{acknowledgementsen}{\begin{quotationpage}{\@acknowledgementsen}}{\end{quotationpage}}
-\newenvironment{acknowledgementszh}{\begin{quotationpage}{\@acknowledgementszh}}{\end{quotationpage}}
+\newenvironment{abstracten}{\begin{quotationpage}{\@abstractnameen}\begin{spacing}{\@doubleline}}{\end{spacing}\end{quotationpage}}
+\newenvironment{abstractzh}{\begin{quotationpage}{\@abstractnamezh}\begin{spacing}{\@onehalfline}}{\end{spacing}\end{quotationpage}}
+\newenvironment{acknowledgementsen}{\begin{quotationpage}{\@acknowledgementsen}\begin{spacing}{\@doubleline}}{\end{spacing}\end{quotationpage}}
+\newenvironment{acknowledgementszh}{\begin{quotationpage}{\@acknowledgementszh}\begin{spacing}{\@onehalfline}}{\end{spacing}\end{quotationpage}}
 
 \setcounter{tocdepth}{2}
 \pagestyle{plain}
 \@setspacing
+
+% ToC, LoF, LoT centering settings with package tocloft
+\renewcommand{\cftloftitlefont}{\hfill \Huge\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cfttoctitlefont}{\hfil \Huge\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill \Huge\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter}{1em}{}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % dots for chapters
+\titlecontents{chapter}[0em]{}{\makebox[1.5em][l]{\thecontentslabel}}{}{\cftdotfill{\cftdotsep}\contentspage}
+
+\makeatletter
+\patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{}
+\patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{}
+\makeatother
+
+% value > 0
+\def\xeCJKembold{0.4}
+
+% hack into xeCJK, you don't need to understand it
+\def\saveCJKnode{\dimen255\lastkern}
+\def\restoreCJKnode{\kern-\dimen255\kern\dimen255}
+
+% save old definition of \CJKsymbol and \CJKpunctsymbol for CJK output
+\let\CJKoldsymbol\CJKsymbol
+\let\CJKoldpunctsymbol\CJKpunctsymbol
+
+% apply pdf literal fake bold
+\def\CJKfakeboldsymbol#1{%
+  \special{pdf:literal direct 2 Tr \xeCJKembold\space w}%
+  \CJKoldsymbol{#1}%
+  \saveCJKnode
+  \special{pdf:literal direct 0 Tr}%
+  \restoreCJKnode}
+\def\CJKfakeboldpunctsymbol#1{%
+  \special{pdf:literal direct 2 Tr \xeCJKembold\space w}%
+  \CJKoldpunctsymbol{#1}%
+  \saveCJKnode
+  \special{pdf:literal direct 0 Tr}%
+  \restoreCJKnode}
+\newcommand\CJKfakebold[1]{%
+  \let\CJKsymbol\CJKfakeboldsymbol
+  \let\CJKpunctsymbol\CJKfakeboldpunctsymbol
+  #1%
+  \let\CJKsymbol\CJKoldsymbol
+  \let\CJKpunctsymbol\CJKoldpunctsymbol}
+\newcommand\zhbf[1]{\CJKfakebold{#1}}
+
+% set Chinese version
+\ifzh
+
+  % set two-character indentation
+  \setlength{\parindent}{2em}
+
+  % Very Naive Chinese Number
+  \DeclareRobustCommand{\naiveZhNum}[1]{
+  \ifnum #1 = 1
+  一
+  \else \ifnum #1 = 2
+  二
+  \else \ifnum #1 = 3
+  三
+  \else \ifnum #1 = 4
+  四
+  \else \ifnum #1 = 5
+  五
+  \else \ifnum #1 = 6
+  六
+  \else \ifnum #1 = 7
+  七
+  \else \ifnum #1 = 8
+  八
+  \else \ifnum #1 = 9
+  九
+  \else
+  #1
+  \fi\fi\fi\fi\fi\fi\fi\fi\fi
+  }
+
+  \titleformat{\chapter}{\centering\Huge\bfseries}{第\naiveZhNum{\thechapter}章}{1em}{}
+  \titlecontents{chapter}[0em]{}{\makebox[4.1em][l]{第\naiveZhNum{\thecontentslabel}章}}{}{\cftdotfill{\cftdotsep}\contentspage}
+
+  \floatname{algorithm}{演算法}
+  \renewcommand{\algorithmicrequire}{\textbf{輸入：}}
+  \renewcommand{\algorithmicensure}{\textbf{輸出：}}
+
+
+  \renewcommand{\contentsname}{目錄}
+  \renewcommand{\listfigurename}{圖目錄}
+  \renewcommand{\listtablename}{表目錄}
+  \renewcommand{\tablename}{表}
+  \renewcommand{\figurename}{圖}
+  \renewcommand{\bibname}{參考文獻}
+
+  \DeclareRobustCommand{\@startappendix}{
+  \titleformat{\chapter}{\centering\Huge\bfseries}{附錄 \thechapter}{1em}{}
+  \titlecontents{chapter}[0em]{}{\makebox[4.1em][l]{附錄 \thecontentslabel}}{}{\cftdotfill{\cftdotsep}\contentspage}
+  \appendix}
+\else
+  \DeclareRobustCommand{\@startappendix}{\appendix}
+\fi

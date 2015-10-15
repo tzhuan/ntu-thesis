@@ -1,4 +1,4 @@
-\documentclass{ntuthesis}
+\documentclass[oneside]{ntuthesis}
 
 \usepackage{times}
 \usepackage{verbatim}
@@ -6,6 +6,19 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{array}
+\usepackage{pdfpages} % include outside .pdf
+\usepackage{wallpaper} % watermark
+
+% Format the refs
+\usepackage[sort,comma]{natbib}
+\usepackage[hidelinks]{hyperref}
+
+% For the tree
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+
+% For barchart
+\usepackage{pgfplots}
 
 % Using the tex-text mapping for ligatures etc.
 \defaultfontfeatures{Mapping=tex-text}
@@ -19,35 +32,59 @@
 
 \begin{document}
 
-\frontmatter
+% 臺大論文浮水印
+\input{watermark.tex}
 
+\hypersetup{pageanchor=false}
+
+\frontmatter
+\pagenumbering{gobble}
 \makecover
 
-\makecertification
+\clearpages
+\setcounter{page}{1}
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\phantomsection
+
+% generate certification
+% \makecertification
+% or include scanned pdf
+\addcontentsline{toc}{chapter}{口試委員會審定書}
+\includepdf[pages={1}]{pdfs/cert.pdf}
 
 \input{acknowledgements}
 \input{abstract}
 
+% Table of Content
+\clearpages
 \tableofcontents
+% List of Figures
+\clearpages
 \listoffigures
+% List of Tables
+\clearpages
 \listoftables
 
 \mainmatter
 
 % Your thesis goes here
-\input{introduction}
-%\input{related}
-%\input{photoshoot}
-%\input{modeling}
-%\input{application}
-%\input{conclusion}
+\input{chapters/introduction}
+\input{chapters/related}
+\input{chapters/method}
+\input{chapters/experiment}
+\input{chapters/conclusion}
 
-\appendix
+\@startappendix
+
+\input{chapters/dataset}
 
 \backmatter
 
+\clearpages
+\phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
-\bibliographystyle{abbrv}
+\bibliographystyle{apa}
 
 % Your bibliography goes here
 \bibliography{thesis}
