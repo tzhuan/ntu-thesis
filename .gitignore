@@ -1,0 +1,13 @@
+/*.log
+/*.aux
+/*.dvi
+/*.lof
+/*.lot
+/*.toc
+/*.bbl
+/*.blg
+/*.pdf
+/*.out
+*~
+*.swp
+/pdfs/watermark.pdf

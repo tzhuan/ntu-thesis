@@ -1,0 +1,34 @@
+\begin{figure}[!htbp]
+    \centering
+    \vspace{2em}
+    \begin{tikzpicture}
+        \begin{axis}[
+            enlarge y limits=0.5,
+            enlarge x limits=0.1,
+            height=4.5cm,
+            width=10cm,
+            symbolic y coords={A,B,C,D},
+            xmin=0,
+            xmax=500,
+            xbar=1pt,
+            xlabel=Numbers,
+            nodes near coords={\pgfmathprintnumber[/pgf/number format/assume math mode]{\pgfplotspointmeta}},
+            nodes near coords align={horizontal},
+            every node near coord/.append style={
+                anchor=west}
+            ,
+            xticklabel style={/pgf/number format/assume math mode},
+            yticklabel style={/pgf/number format/assume math mode},
+            ytick=data
+          ]
+            \addplot[xbar,fill=blue] coordinates {
+            (100,A)
+            (200,B)
+            (50,C)
+            (10,D)
+            };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{A barchart.}
+    \label{i:barchart}
+\end{figure}
