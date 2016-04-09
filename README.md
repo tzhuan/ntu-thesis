@@ -16,6 +16,8 @@
 
 Changelog
 ----------
+  * v0.5.1
+    * Avoid removing pdf files mistakenly.
   * v0.5
     * Fix a typo, thanks to [dyinpao](https://github.com/dyinpao).
     * Support watermark and password setting, thanks to [shaform](https://github.com/shaform) and [qcl](https://github.com/qcl).

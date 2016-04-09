@@ -36,6 +36,6 @@ clean:
 	$(RM) *.log *.aux *.dvi *.lof *.lot *.toc *.bbl *.blg
 
 clean-pdf: 
-	$(RM) *.pdf
+	$(RM) -f $(MAIN).pdf $(MAIN)-with-pass.pdf
 
 clean-all: clean clean-pdf
