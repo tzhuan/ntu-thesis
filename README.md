@@ -16,6 +16,9 @@
 
 Changelog
 ----------
+  * v0.5
+    * Fix a typo, thanks to [dyinpao](https://github.com/dyinpao).
+    * Support watermark and password setting, thanks to [shaform](https://github.com/shaform) and [qcl](https://github.com/qcl).
   * v0.4
     * Rename \year, \month and \day to avoid the conflicts. Thanks to [shaform](https://github.com/shaform).
   * v0.3.1
