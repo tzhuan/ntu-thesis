@@ -17,7 +17,7 @@
 Changelog
 ----------
   * v0.6
-    * Add DOI support, thanks to [WeiTang114](https://github.com/WeiTang114)
+    * Add DOI support, thanks to [WeiTang114](https://github.com/WeiTang114).
   * v0.5.1
     * Avoid removing pdf files mistakenly.
   * v0.5
