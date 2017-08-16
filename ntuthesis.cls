@@ -28,6 +28,7 @@
 \RequirePackage[top=2cm,left=3cm,bottom=3cm,right=3cm]{geometry}
 \RequirePackage{xeCJK}
 \RequirePackage{setspace}
+\RequirePackage[contents={}]{background}
 
 % Declarations
 \DeclareRobustCommand{\university}[2]{\gdef\@universityen{#1}\gdef\@universityzh{#2}}
@@ -42,6 +43,7 @@
 \DeclareRobustCommand{\defenseday}[1]{\gdef\@day{#1}}
 \DeclareRobustCommand{\abstractname}[2]{\gdef\@abstractnameen{#1}\gdef\@abstractnamezh{#2}}
 \DeclareRobustCommand{\acknowledgements}[2]{\gdef\@acknowledgementsen{#1}\gdef\@acknowledgementszh{#2}}
+\DeclareRobustCommand{\doi}[1]{\gdef\@doi{#1}}
 
 \abstractname{Abstract}{摘要}
 \acknowledgements{Acknowledgements}{誌謝}
@@ -76,6 +78,19 @@
     \end{singlespace}
     \vspace{1cm}
   \end{titlepage}
+}
+
+\DeclareRobustCommand{\insertdoi}{
+  \backgroundsetup{
+    contents={\@doi},
+    color=black,
+    angle=0,
+    position={current page.south east},
+    scale=0.8,
+    opacity=1,
+    hshift={-3.5cm},
+    vshift={1.5cm}
+  }
 }
 
 %  stolen from CJKfntef

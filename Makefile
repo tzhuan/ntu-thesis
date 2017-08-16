@@ -13,10 +13,14 @@ all: $(MAIN).pdf
 endif
 
 ifdef WATERMARK
-TEXFLAG="\def\withwatermark{1}\input{$(MAIN)}"
-else
-TEXFLAG=
+TEXFLAG+="\def\withwatermark{1} "
 endif
+
+ifdef DOI
+TEXFLAG+="\def\withdoi{1} "
+endif
+
+TEXFLAG+="\input{$(MAIN)}"
 
 $(MAIN).pdf: *.tex ntuthesis.cls
 ifdef WATERMARK
