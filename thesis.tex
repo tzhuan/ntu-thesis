@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{array}
 \usepackage{wallpaper} 
+\usepackage{hyperref}
 
 % Using the tex-text mapping for ligatures etc.
 \defaultfontfeatures{Mapping=tex-text}
@@ -25,6 +26,17 @@
 \ifdefined\withdoi
   \insertdoi
 \fi
+
+\makeatletter
+\AtBeginDocument{
+  \hypersetup{
+    pdftitle={\@titleen},
+    pdfauthor={\@authoren},
+    pdfsubject={\@typeen{} \@classen},
+    pdfkeywords={\@keywordsen}
+  }
+}
+\makeatother
 
 % Your information goes here
 \input{ntuvars}
