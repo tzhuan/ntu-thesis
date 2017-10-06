@@ -16,6 +16,8 @@
 
 Changelog
 ----------
+  * v0.7
+    * Add keywords and PDF properties supports, thanks to [moneycat](https://github.com/moneycat).
   * v0.6
     * Add DOI support, thanks to [WeiTang114](https://github.com/WeiTang114).
   * v0.5.1
