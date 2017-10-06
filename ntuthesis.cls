@@ -45,6 +45,7 @@
 \DeclareRobustCommand{\abstractname}[2]{\gdef\@abstractnameen{#1}\gdef\@abstractnamezh{#2}}
 \DeclareRobustCommand{\acknowledgements}[2]{\gdef\@acknowledgementsen{#1}\gdef\@acknowledgementszh{#2}}
 \DeclareRobustCommand{\doi}[1]{\gdef\@doi{#1}}
+\DeclareRobustCommand{\keywords}[2]{\gdef\@keywordsen{#1}\gdef\@keywordszh{#2}}
 
 \abstractname{Abstract}{摘要}
 \acknowledgements{Acknowledgements}{誌謝}
