@@ -8,6 +8,8 @@
 \usepackage{array}
 \usepackage{wallpaper} 
 \usepackage{hyperref}
+\usepackage[printwatermark]{xwatermark}
+\usepackage{graphicx}
 
 % Using the tex-text mapping for ligatures etc.
 \defaultfontfeatures{Mapping=tex-text}
@@ -17,9 +19,7 @@
 \setCJKmainfont{標楷體}
 
 \ifdefined\withwatermark
-  \CenterWallPaper{0.174}{watermark.pdf}
-  \setlength{\wpXoffset}{6.1725cm}
-  \setlength{\wpYoffset}{10.5225cm}
+  \newwatermark*[allpages,xpos=6.1725cm,ypos=10.5225cm,scale=0.5]{\includegraphics{watermark.pdf}}
 \fi
 
 % digital object identifier
