@@ -16,6 +16,8 @@
 
 Changelog
 ----------
+  * v0.8
+    * Support watermark with transparent background, thanks to [zipong](https://github.com/zipong)
   * v0.7
     * Add keywords and PDF properties supports, thanks to [moneycat](https://github.com/moneycat).
   * v0.6
