@@ -6,10 +6,11 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{array}
-\usepackage{wallpaper} 
+\usepackage{wallpaper}
 \usepackage{hyperref}
 \usepackage[printwatermark]{xwatermark}
 \usepackage{graphicx}
+\usepackage{pdfpages}
 
 % Using the tex-text mapping for ligatures etc.
 \defaultfontfeatures{Mapping=tex-text}
@@ -47,7 +48,11 @@
 
 \makecover
 
-\makecertification
+\ifdefined\withcertification
+  \includepdf[angle=0]{certification.pdf}
+\else
+  \makecertification
+\fi
 
 \input{acknowledgements}
 \input{abstract}

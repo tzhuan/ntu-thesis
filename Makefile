@@ -20,6 +20,10 @@ ifdef DOI
 TEXFLAG+="\def\withdoi{1} "
 endif
 
+ifdef CERTIFICATION
+TEXFLAG+="\def\withcertification{1} "
+endif
+
 TEXFLAG+="\input{$(MAIN)}"
 
 $(MAIN).pdf: *.tex ntuthesis.cls
@@ -39,7 +43,7 @@ endif
 clean:
 	$(RM) *.log *.aux *.dvi *.lof *.lot *.toc *.bbl *.blg
 
-clean-pdf: 
+clean-pdf:
 	$(RM) -f $(MAIN).pdf $(MAIN)-with-pass.pdf
 
 clean-all: clean clean-pdf
