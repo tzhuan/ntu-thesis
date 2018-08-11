@@ -16,6 +16,8 @@
 
 Changelog
 ----------
+  * v0.9
+    * Support inserting certification pdf file, thanks to [dragonkao730](https://github.com/dragonkao730).
   * v0.8
     * Support watermark with transparent background, thanks to [zipong](https://github.com/zipong).
   * v0.7
