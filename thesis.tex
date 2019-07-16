@@ -17,16 +17,7 @@
 
 % Set the default fonts
 \setmainfont{Times New Roman}
-\setCJKmainfont{標楷體}
-
-\ifdefined\withwatermark
-  \newwatermark*[allpages,xpos=6.1725cm,ypos=10.5225cm,scale=0.5]{\includegraphics{watermark.pdf}}
-\fi
-
-% digital object identifier
-\ifdefined\withdoi
-  \insertdoi
-\fi
+\setCJKmainfont{教育部標準楷書}
 
 \makeatletter
 \AtBeginDocument{
@@ -47,6 +38,15 @@
 \frontmatter
 
 \makecover
+
+\ifdefined\withwatermark
+  \newwatermark*[allpages,xpos=6.1725cm,ypos=10.5225cm,scale=0.5]{\includegraphics{watermark.pdf}}
+\fi
+
+% digital object identifier
+\ifdefined\withdoi
+  \insertdoi
+\fi
 
 \ifdefined\withcertification
   \includepdf[angle=0]{certification.pdf}
