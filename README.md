@@ -16,6 +16,8 @@
 
 Changelog
 ----------
+  * v1.0
+    * Do not show watermark in the cover pages, thanks to [louis2889184](https://github.com/louis2889184).
   * v0.9
     * Support inserting certification pdf file, thanks to [dragonkao730](https://github.com/dragonkao730).
   * v0.8
