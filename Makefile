@@ -24,6 +24,12 @@ ifdef CERTIFICATION
 TEXFLAG+="\def\withcertification{1} "
 endif
 
+ifdef FIRSTPAGE
+TEXFLAG+="\def\firstpage{1} "
+else
+TEXFLAG+="\def\excludefirstpage{1} "
+endif
+
 TEXFLAG+="\input{$(MAIN)}"
 
 $(MAIN).pdf: *.tex ntuthesis.cls
