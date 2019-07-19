@@ -16,6 +16,8 @@
 
 Changelog
 ----------
+  * v1.1
+    * New switch to turn on/off the watermark and DOI for the first page, thanks to [louis2889184](https://github.com/louis2889184).
   * v1.0
     * Do not show watermark in the cover pages, thanks to [louis2889184](https://github.com/louis2889184).
   * v0.9
