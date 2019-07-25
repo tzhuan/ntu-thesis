@@ -16,6 +16,8 @@
 
 Changelog
 ----------
+  * v1.2
+    * Refine the certification page.
   * v1.1
     * New switch to turn on/off the watermark and DOI for the first page, thanks to [louis2889184](https://github.com/louis2889184).
   * v1.0

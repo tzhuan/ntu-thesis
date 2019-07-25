@@ -10,7 +10,6 @@
 \usepackage{hyperref}
 \usepackage[printwatermark]{xwatermark}
 \usepackage{graphicx}
-\usepackage{pdfpages}
 \usepackage{tikz}
 
 % Using the tex-text mapping for ligatures etc.
@@ -68,11 +67,7 @@
   \fi
 \fi
 
-\ifdefined\withcertification
-  \includepdf[angle=0]{certification.pdf}
-\else
-  \makecertification
-\fi
+\makecertification
 
 \input{acknowledgements}
 \input{abstract}
