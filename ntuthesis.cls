@@ -1,5 +1,5 @@
 % author: Tz-Huan Huang [http://www.csie.ntu.edu.tw/~tzhuan]
-% version: 1.2
+% version: 1.3
 
 % ----------------------------------------------------------------------------
 % "THE CHOCOLATE-WARE LICENSE":

@@ -16,6 +16,8 @@
 
 Changelog
 ----------
+  * v1.3
+    * Enable fake bold/italic font by default, thanks to [alan23273850](https://github.com/alan23273850).
   * v1.2
     * Refine the certification page.
   * v1.1
