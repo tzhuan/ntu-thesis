@@ -2,7 +2,7 @@ MAIN=thesis
 LATEX=xelatex
 BIBTEX=bibtex
 RM=rm -f
-NTU_WATERMARK_LINK=http://etds.lib.ntu.edu.tw/files/watermark.pdf
+NTU_WATERMARK_LINK=https://www.lib.ntu.edu.tw/doc/CL/watermark.pdf
 
 .SUFFIXES: .tex
 
