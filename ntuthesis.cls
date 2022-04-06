@@ -18,9 +18,9 @@
 \DeclareRobustCommand{\@classzh}{論文}
 \DeclareOption{phd}{\gdef\@typeen{Doctoral}\gdef\@typezh{博士}\gdef\@classen{Dissertation}}
 \DeclareOption{proposal}{\gdef\@typeen{Proposal for Doctoral}\gdef\@typezh{博士論文計畫提案書}\gdef\@classen{Dissertation}\gdef\@classzh{}}
-\DeclareRobustCommand{\@setspacing}{\doublespacing}
-\DeclareOption{singlespacing}{\gdef\@setspacing{\singlespacing}}
-\DeclareOption{onehalfspacing}{\gdef\@setspacing{\onehalfspacing}}
+\DeclareRobustCommand{\@setspacing}{\setstretch{2}}
+\DeclareOption{singlespacing}{\gdef\@setspacing{\setstretch{1}}}
+\DeclareOption{onehalfspacing}{\gdef\@setspacing{\setstretch{1.5}}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass[a4paper,12pt]{book}
